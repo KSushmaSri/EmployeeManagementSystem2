@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+	<style>
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: #f4f4f4;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+		}
+		h1{
+			color: #333;
+		}
+		form{
+			background-color: white;
+			max-width:500px;
+			margin:0 auto;
+			padding: 50px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+			
+		}
+		input{
+			display: block;
+			width: 100%;
+			padding: 8px;
+			margin:10px 0;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		input::placeholder{
+			font-weight: 600;
+			opacity: 0.8;
+		}
+		button{
+			background-color: #007bff;
+			color:white;
+			border: none;
+			font-size: 1em;
+			font-weight: 600;
+			padding: 10px 25px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		button:hover{
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+<body>
+    <h1>Add/Edit Employee</h1>
+    <form th:action="@{/employees/save}" th:object="${employee}" method="post">
+		<input type="hidden" th:field="*{id}">
+        <input type="text" placeholder="Enter Name" th:field="*{name}" required><br>
+        <input type="text" placeholder="Enter Job Title" th:field="*{jobtitle}" required><br>
+        <input type="text" placeholder="Enter Department" th:field="*{department}" required><br>
+        <input type="text" placeholder="Enter Mobile Number" th:field="*{mobilenumber}" required><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
